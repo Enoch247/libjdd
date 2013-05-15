@@ -1,0 +1,12 @@
+#*******************************************************************************
+# Written by: Joshua DeWeese(josh.deweese@gmail.com)
+# please catch and release
+#*******************************************************************************
+
+A collection of useful code that does not necessarily have any better place to 
+be.
+
+If you plan to use any of the ftdi classes you will have to make sure and link
+against libftdi (http://www.intra2net.com/en/developer/libftdi/)
+(installed by: apt-get install libftdi-dev)
+
