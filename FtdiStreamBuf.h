@@ -54,7 +54,7 @@ class FtdiStreamBuf: public streambuf
     FtdiWrapper ftdi;
 
     vector<uint8_t> writeBuf;//all writes go here untill a flush is sent
-    char readBuf;//minimal read buffer since libftdi is already buffering
+    uint8_t readBuf;//minimal read buffer since libftdi is already buffering
 };
 
 }//namespace

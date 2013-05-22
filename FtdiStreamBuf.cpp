@@ -7,8 +7,8 @@
 
 namespace jdd{
 
-FtdiStreamBuf::FtdiStreamBuf(unsigned int vid, unsigned int pid, string description,
-                             string serialNum):
+FtdiStreamBuf::FtdiStreamBuf(unsigned int vid, unsigned int pid,
+                             string description, string serialNum):
     ftdi(vid, pid, description, serialNum)
 {
 }
@@ -30,7 +30,7 @@ int FtdiStreamBuf::underflow()
     ftdi.get( (uint8_t*)&readBuf, sizeof(readBuf) );
 
     //set streambuf's get pointers
-    setg( &readBuf, &readBuf, &readBuf + 1 );
+    setg( (char*)&readBuf, (char*)&readBuf, (char*)&readBuf + 1 );
 
     return readBuf;
 }
