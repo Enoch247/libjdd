@@ -46,7 +46,7 @@ test-bitbang: test/bitbangtest
 
 #for each foo.o include its foo.o.dep
 #include $(patsubst %.o, %.o.dep,  $(wildcard *.o))
-include $(DEP)
+-include $(DEP)
 
 #create lib
 libjdd.a: bitbang.o uri.o FtdiWrapper.o FtdiStreamBuf.o FtdiStream.o
@@ -72,14 +72,5 @@ test/bitbangtest: test/bitbangtest.o libjdd.a
 #for any obj.o compile it from its obj.cpp file
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-
-# CPPFLAGS is correct in next two rules it is C "preprocessor flags"
-
-#for any foo.cpp, generate its foo.o.dep file
-%.o.dep: %.cpp
-	$(CXX) -MM $(CPPFLAGS) $< | sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' > $@
-
-#for any foo.c, generate its foo.o.dep file
-%.o.dep: %.c
-	$(CC) -MM $(CPPFLAGS) $< | sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' > $@
+	$(CXX) -MM $(CPPFLAGS) -MF $@.dep $<
 
