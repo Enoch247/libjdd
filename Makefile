@@ -34,7 +34,7 @@ clean:
 	-rm $(OBJ) $(DEP) $(TARGETS)
 
 todolist:
-	grep --color=auto 'TODO' $$(find .)
+	grep --color=auto 'TODO' `find`
 
 test: test-bitbang
 
@@ -72,5 +72,5 @@ test/bitbangtest: test/bitbangtest.o libjdd.a
 #for any obj.o compile it from its obj.cpp file
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
-	$(CXX) -MM $(CPPFLAGS) -MF $@.dep $<
+	$(CXX) -MM $(CPPFLAGS) -MT $@ -MF $@.dep $<
 
