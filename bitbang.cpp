@@ -3,160 +3,81 @@
  please catch and release
 *******************************************************************************/
 
-#include <netinet/in.h>
+//#include <netinet/in.h>
+#include <arpa/inet.h> //hton & ntoh
+//#include <endian.h>
 #include <limits.h>
 #include "bitbang.h"
 
 namespace jdd{
 
-uint8_t& uint_t_base::byte(size_t i)
-{
-    return ( (uint8_t*)this )[i];
-}
-
-const uint8_t& uint_t_base::byte(size_t i) const
-{
-    return ( (uint8_t*)this )[i];
-}
-
-//==============================================================================
-
-uint8_nt::uint8_nt()
-{
-}
-
-uint8_nt::uint8_nt(uint8_t i):
-	data(i)
-{
-}
-
-uint8_t uint8_nt::operator = (uint8_t rhv)
-{
-	return data = rhv;
-}
-
-uint8_nt::operator uint8_t () const
-{
-	return data;
-}
-
-//==============================================================================
-
-uint16_nt::uint16_nt()
-{
-}
-
-uint16_nt::uint16_nt(uint16_t i):
-	data(htons(i))
-{
-}
-
-uint16_t uint16_nt::operator = (uint16_t rhv)
-{
-	return data = htons(rhv);
-}
-
-uint16_nt::operator uint16_t () const
-{
-	return ntohs(data);
-}
-
-//==============================================================================
-
-uint32_nt::uint32_nt()
-{
-}
-
-uint32_nt::uint32_nt(uint32_t i):
-	data(htonl(i))
-{
-}
-
-uint32_t uint32_nt::operator = (uint32_t rhv)
-{
-	return data = htonl(rhv);
-}
-
-uint32_nt::operator uint32_t () const
-{
-	return ntohl(data);
-}
-
-//uint32_nt uint32_nt::operator = (uint32_nt rhv)
+//uint8_t& uint_t_base::byte(size_t i)
 //{
-//	data = rhv.data;
-//	return rhv;
+//    return ( (uint8_t*)this )[i];
 //}
 
-//bool uint32_nt::operator == (const uint32_nt rhv) const
+//const uint8_t& uint_t_base::byte(size_t i) const
 //{
-//	return data == rhv.data;
+//    return ( (uint8_t*)this )[i];
 //}
 
-//bool uint32_nt::operator != (const uint32_nt rhv) const
+////==============================================================================
+
+//uint32_nt::uint32_nt()
 //{
-//	return data != rhv.data;
 //}
 
-//uint32_nt uint32_nt::operator | (const uint32_nt rhv) const
+//uint32_nt::uint32_nt(uint32_t i):
+//	data(htonl(i))
 //{
-//	uint32_nt rtn;
-//	rtn.data = data | rhv.data;
-//	return rtn;
 //}
 
-//uint32_nt uint32_nt::operator & (const uint32_nt rhv) const
+//uint32_t uint32_nt::operator = (uint32_t rhv)
 //{
-//	uint32_nt rtn;
-//	rtn.data = data & rhv.data;
-//	return rtn;
+//	return data = htonl(rhv);
 //}
 
-//uint32_nt uint32_nt::operator ~ () const
+//uint32_nt::operator uint32_t () const
 //{
-//	uint32_nt rtn;
-//	rtn.data = ~data;
-//	return rtn;
+//	return ntohl(data);
 //}
 
-//==============================================================================
-// stream operators
+////uint32_nt uint32_nt::operator = (uint32_nt rhv)
+////{
+////	data = rhv.data;
+////	return rhv;
+////}
 
-istream& operator >> (istream &is, uint8_nt &rhv)
-{
-    is.read( (char*)&rhv, sizeof(rhv) );
-    return is;
-}
+////bool uint32_nt::operator == (const uint32_nt rhv) const
+////{
+////	return data == rhv.data;
+////}
 
-istream& operator >> (istream &is, uint16_nt &rhv)
-{
-    is.read( (char*)&rhv, sizeof(rhv) );
-    return is;
-}
+////bool uint32_nt::operator != (const uint32_nt rhv) const
+////{
+////	return data != rhv.data;
+////}
 
-istream& operator >> (istream &is, uint32_nt &rhv)
-{
-    is.read( (char*)&rhv, sizeof(rhv) );
-    return is;
-}
+////uint32_nt uint32_nt::operator | (const uint32_nt rhv) const
+////{
+////	uint32_nt rtn;
+////	rtn.data = data | rhv.data;
+////	return rtn;
+////}
 
-ostream& operator << (ostream &os, const uint8_nt &rhv)
-{
-    os.write( (const char*)&rhv, sizeof(rhv) );
-    return os;
-}
+////uint32_nt uint32_nt::operator & (const uint32_nt rhv) const
+////{
+////	uint32_nt rtn;
+////	rtn.data = data & rhv.data;
+////	return rtn;
+////}
 
-ostream& operator << (ostream &os, const uint16_nt &rhv)
-{
-    os.write( (const char*)&rhv, sizeof(rhv) );
-    return os;
-}
-
-ostream& operator << (ostream &os, const uint32_nt &rhv)
-{
-    os.write( (const char*)&rhv, sizeof(rhv) );
-    return os;
-}
+////uint32_nt uint32_nt::operator ~ () const
+////{
+////	uint32_nt rtn;
+////	rtn.data = ~data;
+////	return rtn;
+////}
 
 //==============================================================================
 
