@@ -76,68 +76,14 @@ union NetworkInt
         return bytes[i];
     }
 
-
-    // other operator overloads to improve preformance
-
-    NetworkInt operator = (const NetworkInt& rhv)
+    // assignment from another NetworkInt
+    const NetworkInt& operator = (const NetworkInt& rhv)
     {
         data = rhv.data;
         return rhv;
     }
 
-
-    bool operator == (const NetworkInt& rhv) const
-    {
-        return data == rhv.data;
-    }
-
-    bool operator == (const NativeType& rhv) const
-    {
-        return NativeType(*this) == rhv;
-    }
-
-
-    bool operator != (const NetworkInt& rhv) const
-    {
-        return data != rhv.data;
-    }
-
-    bool operator != (const NativeType& rhv) const
-    {
-        return NativeType(*this) != rhv;
-    }
-
-
-    NetworkInt operator | (const NetworkInt& rhv) const
-    {
-        NetworkInt rtn;
-        rtn.data = data | rhv.data;
-        return rtn;
-    }
-
-    NativeType operator | (const NativeType& rhv) const
-    {
-        NativeType rtn;
-        rtn = NativeType(*this) | rhv;
-        return rtn;
-    }
-
-
-    NetworkInt operator & (const NetworkInt& rhv) const
-    {
-        NetworkInt rtn;
-        rtn.data = data & rhv.data;
-        return rtn;
-    }
-
-    NativeType operator & (const NativeType& rhv) const
-    {
-        NativeType rtn;
-        rtn = NativeType(*this) & rhv;
-        return rtn;
-    }
-
-
+    // bitwise not
     NetworkInt operator ~ () const
     {
         NetworkInt rtn;
@@ -145,6 +91,29 @@ union NetworkInt
         return rtn;
     }
 
+    // equal to
+    template<typename T, typename E> friend
+    bool operator == (const NetworkInt<T, E>& lhv, const NetworkInt<T, E>& rhv);
+
+    // not equal too
+    template<typename T, typename E> friend
+    bool operator != (const NetworkInt<T, E>& lhv, const NetworkInt<T, E>& rhv);
+
+    // bitwise or
+    template<typename T, typename E> friend
+    NetworkInt<T, E> operator | (const NetworkInt<T, E>& lhv, const NetworkInt<T, E>& rhv);
+
+    // bitwise and
+    template<typename T, typename E> friend
+    NetworkInt<T, E> operator & (const NetworkInt<T, E>& lhv, const NetworkInt<T, E>& rhv);
+
+    // bitwise xor
+    template<typename T, typename E> friend
+    NetworkInt<T, E> operator ^ (const NetworkInt<T, E>& lhv, const NetworkInt<T, E>& rhv);
+
+    //TODO operator a &= b
+    //TODO operator a |= b
+    //TODO operator a ^= b
 
     private:
     NativeType data;
@@ -166,6 +135,48 @@ std::ostream& operator << (std::ostream &os, const NetworkInt<T1, T2> &i)
 {
     os.write( (const char*)&i, sizeof(i) );
     return os;
+}
+
+//==============================================================================
+//operator overloads for NewtorkInt (these need to be defined as non member
+//functions or else compiler has trouble deciding wether to use these or the
+//bultin ones that are for the native int type that the NetworkInts can be cast
+//too if doing something like "uint32_nt(0) == 0")
+
+template<typename T, typename E>
+bool operator == (const NetworkInt<T, E>& lhv, const NetworkInt<T, E>& rhv)
+{
+    return lhv.data == rhv.data;
+}
+
+template<typename T, typename E>
+bool operator != (const NetworkInt<T, E>& lhv, const NetworkInt<T, E>& rhv)
+{
+    return lhv.data != rhv.data;
+}
+
+template<typename T, typename E>
+NetworkInt<T, E> operator | (const NetworkInt<T, E>& lhv, const NetworkInt<T, E>& rhv)
+{
+    NetworkInt<T, E> rtn;
+    rtn.data = lhv.data | rhv.data;
+    return rtn;
+}
+
+template<typename T, typename E>
+NetworkInt<T, E> operator & (const NetworkInt<T, E>& lhv, const NetworkInt<T, E>& rhv)
+{
+    NetworkInt<T, E> rtn;
+    rtn.data = lhv.data & rhv.data;
+    return rtn;
+}
+
+template<typename T, typename E>
+NetworkInt<T, E> operator ^ (const NetworkInt<T, E>& lhv, const NetworkInt<T, E>& rhv)
+{
+    NetworkInt<T, E> rtn;
+    rtn.data = lhv.data ^ rhv.data;
+    return rtn;
 }
 
 //==============================================================================
