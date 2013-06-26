@@ -85,15 +85,28 @@ union NetworkInt
         return rhv;
     }
 
+
     bool operator == (const NetworkInt& rhv) const
     {
         return data == rhv.data;
     }
 
+    bool operator == (const NativeType& rhv) const
+    {
+        return NativeType(*this) == rhv;
+    }
+
+
     bool operator != (const NetworkInt& rhv) const
     {
         return data != rhv.data;
     }
+
+    bool operator != (const NativeType& rhv) const
+    {
+        return NativeType(*this) != rhv;
+    }
+
 
     NetworkInt operator | (const NetworkInt& rhv) const
     {
@@ -102,14 +115,30 @@ union NetworkInt
         return rtn;
     }
 
-    uint32_nt operator & (const NetworkInt& rhv) const
+    NativeType operator | (const NativeType& rhv) const
+    {
+        NativeType rtn;
+        rtn = NativeType(*this) | rhv;
+        return rtn;
+    }
+
+
+    NetworkInt operator & (const NetworkInt& rhv) const
     {
         NetworkInt rtn;
         rtn.data = data & rhv.data;
         return rtn;
     }
 
-    uint32_nt operator ~ () const
+    NativeType operator & (const NativeType& rhv) const
+    {
+        NativeType rtn;
+        rtn = NativeType(*this) & rhv;
+        return rtn;
+    }
+
+
+    NetworkInt operator ~ () const
     {
         NetworkInt rtn;
         rtn.data = ~data;
