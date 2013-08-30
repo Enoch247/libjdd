@@ -5,6 +5,7 @@
 
 #pragma once
 #include "NetworkInt.h"
+#include "Nill.h"
 
 namespace jdd{
 
