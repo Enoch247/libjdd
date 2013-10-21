@@ -76,6 +76,8 @@ int FtdiWrapper::put(const uint8_t *buffer, unsigned int bufSize, unsigned int m
         buffer += status;//move buffer pointer
         bufSize -= status;//adjust buffer size
 
+        //TODO: progressively sleep?
+
 //        trys ++;
 //        if(trys > 10)
 //            throw runtime_error("timeout occured durring write to usb");
@@ -109,6 +111,8 @@ int FtdiWrapper::get(uint8_t *buffer, unsigned int bufSize, unsigned int minGet)
         bytesRead += status;//keep track of how much we got
         buffer += status;//move buffer pointer
         bufSize -= status;//adjust buffer size
+
+        //TODO: progressively sleep?
 
 //        trys ++;
 //        if(trys > 10)
