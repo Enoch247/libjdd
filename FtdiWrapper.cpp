@@ -59,7 +59,7 @@ void FtdiWrapper::put(const uint8_t *buffer, unsigned int bufSize)
 int FtdiWrapper::put(const uint8_t *buffer, unsigned int bufSize, unsigned int minPut)
 {
     unsigned int bytesWritten = 0;
-    unsigned int trys = 0;
+//    unsigned int trys = 0;
     int status;
 
     while(bytesWritten < minPut)
@@ -75,9 +75,9 @@ int FtdiWrapper::put(const uint8_t *buffer, unsigned int bufSize, unsigned int m
         buffer += status;//move buffer pointer
         bufSize -= status;//adjust buffer size
 
-        trys ++;
-        if(trys > 10)
-            throw runtime_error("timeout occured durring write to usb");
+//        trys ++;
+//        if(trys > 10)
+//            throw runtime_error("timeout occured durring write to usb");
 
     }
     return bytesWritten;
@@ -91,7 +91,7 @@ void FtdiWrapper::get(uint8_t *buffer, unsigned int bufSize)
 int FtdiWrapper::get(uint8_t *buffer, unsigned int bufSize, unsigned int minGet)
 {
     unsigned int bytesRead = 0;
-    unsigned int trys = 0;
+//    unsigned int trys = 0;
     int status;
 
     while(bytesRead < minGet)
@@ -106,9 +106,9 @@ int FtdiWrapper::get(uint8_t *buffer, unsigned int bufSize, unsigned int minGet)
         buffer += status;//move buffer pointer
         bufSize -= status;//adjust buffer size
 
-        trys ++;
-        if(trys > 10)
-            throw runtime_error("timeout occured durring read to usb");
+//        trys ++;
+//        if(trys > 10)
+//            throw runtime_error("timeout occured durring read to usb");
 
     }
     return bytesRead;
