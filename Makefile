@@ -21,17 +21,16 @@ LDFLAGS  = $(CXXFLAGS)
 SRC = $(shell ls *.cpp test/*.cpp)
 OBJ = $(SRC:.cpp=.o)
 DEP = $(OBJ:.o=.o.dep)
-TARGETS = libjdd.a libjdd_ftdi.a test/bitbangtest
 
 #===============================================================================
 #convenience items for testing and what not:
 
 .PHONY: all clean todolist test
 
-all: $(TARGETS)
+all: libjdd.a
 
 clean:
-	-rm $(OBJ) $(DEP) $(TARGETS)
+	-rm $(OBJ) $(DEP) libjdd.a test/bitbangtest
 
 todolist:
 	grep --color=auto 'TODO' `find`
@@ -50,9 +49,6 @@ test-bitbang: test/bitbangtest
 
 #create lib
 libjdd.a: bitbang.o uri.o FtdiWrapper.o FtdiStreamBuf.o FtdiStream.o
-
-#create lib
-libjdd_ftdi.a: FtdiWrapper.o FtdiStreamBuf.o FtdiStream.o
 
 #create test program
 test/bitbangtest: test/bitbangtest.o libjdd.a
