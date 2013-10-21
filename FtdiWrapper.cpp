@@ -30,7 +30,7 @@ FtdiWrapper::FtdiWrapper(unsigned int vid, unsigned int pid, string description,
             stringstream msg;
             msg << "unable to open ftdi connection: ";
             msg << ftdi_get_error_string(ftdiContext);
-            msg << " (Do you have sufficient privileges to access the usb bus? Is the device connected?)";
+//            msg << " (Do you have sufficient privileges to access the usb bus? Is the device connected?)";
             throw runtime_error( msg.str() );
         }
     }
