@@ -114,25 +114,5 @@ int FtdiWrapper::get(uint8_t *buffer, unsigned int bufSize, unsigned int minGet)
     return bytesRead;
 }
 
-//FtdiWrapper& operator >> (FtdiWrapper &usb, uint8_t &rhv)
-//{
-//    usb.get( &rhv, sizeof(rhv) );
-//    return usb;
-//}
-
-//FtdiWrapper& operator >> (FtdiWrapper &usb, uint16_nt &rhv)
-//{
-//    usb.get( (uint8_t*)&rhv, sizeof(rhv) );
-//    return usb;
-//}
-
-//FtdiWrapper& operator >> (FtdiWrapper &usb, uint16_t &rhv)
-//{
-//    uint16_nt tmp;
-//    usb >> tmp;
-//    rhv = tmp;
-//    return usb;
-//}
-
 }//namespace
 

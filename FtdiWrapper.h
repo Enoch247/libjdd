@@ -58,9 +58,5 @@ class FtdiWrapper
     ftdi_context *ftdiContext;
 };
 
-//FtdiWrapper& operator >> (FtdiWrapper &usb, uint8_t &rhv);
-//FtdiWrapper& operator >> (FtdiWrapper &usb, uint16_nt &rhv);
-//FtdiWrapper& operator >> (FtdiWrapper &usb, uint16_t &rhv);
-
 }//namespace
 
