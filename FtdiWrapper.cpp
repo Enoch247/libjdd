@@ -58,11 +58,11 @@ void FtdiWrapper::put(const uint8_t *buffer, unsigned int bufSize)
 
 int FtdiWrapper::put(const uint8_t *buffer, unsigned int bufSize, unsigned int minPut)
 {
-    unsigned int bytesWritten;
+    unsigned int bytesWritten = 0;
 //    unsigned int trys = 0;
     int status;
 
-    do
+    while(bytesWritten < minPut)
     {
         //TODO: casting away const is BAD
         //usb write
@@ -83,7 +83,6 @@ int FtdiWrapper::put(const uint8_t *buffer, unsigned int bufSize, unsigned int m
 //            throw runtime_error("timeout occured durring write to usb");
 
     }
-    while(bytesWritten < minPut);
 
     return bytesWritten;
 }
@@ -95,11 +94,11 @@ void FtdiWrapper::get(uint8_t *buffer, unsigned int bufSize)
 
 int FtdiWrapper::get(uint8_t *buffer, unsigned int bufSize, unsigned int minGet)
 {
-    unsigned int bytesRead;
+    unsigned int bytesRead = 0;
 //    unsigned int trys = 0;
     int status;
 
-    do
+    while(bytesRead < minGet)
     {
         //usb read
         status = ftdi_read_data(ftdiContext, buffer, bufSize);
@@ -119,7 +118,6 @@ int FtdiWrapper::get(uint8_t *buffer, unsigned int bufSize, unsigned int minGet)
 //            throw runtime_error("timeout occured durring read to usb");
 
     }
-    while(bytesRead < minGet);
 
     return bytesRead;
 }
