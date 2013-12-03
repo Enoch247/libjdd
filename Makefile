@@ -12,7 +12,7 @@
 # flags
 DEBUG    = -g
 CFLAGS   = $(CXXFLAGS)
-CXXFLAGS = $(DEBUG) -Wall -fPIC
+CXXFLAGS = $(DEBUG) -Wall -fPIC -std=c++0x
 LDFLAGS  = $(CXXFLAGS)
 
 # other
