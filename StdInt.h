@@ -15,17 +15,6 @@ class BigEndian;
 class LilEndian;
 template<class NativeType, class Encoding> union StdInt;
 
-//Network Ints
-typedef int8_be uint8_nt;
-typedef int8_be uint16_nt;
-typedef int8_be uint32_nt;
-typedef int8_be uint64_nt;
-
-typedef int8_be int8_nt;
-typedef int8_be int16_nt;
-typedef int8_be int32_nt;
-typedef int8_be int64_nt;
-
 //Big Endian
 typedef StdInt<uint8_t,  BigEndian> uint8_be;
 typedef StdInt<uint16_t, BigEndian> uint16_be;

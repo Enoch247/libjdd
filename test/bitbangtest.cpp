@@ -11,10 +11,10 @@ int main(int argc, char *argv[])
 
     stringstream ss;
     ss
-        << uint8_nt(0x01)
-        << uint16_nt(0x0203)
-        << uint32_nt(0x04050607)
-        << uint64_nt(0x08090a0b0c0d0e0f)
+        << uint8_be(0x01)
+        << uint16_be(0x0203)
+        << uint32_be(0x04050607)
+        << uint64_be(0x08090a0b0c0d0e0f)
         ;
 
     string s = ss.str();
