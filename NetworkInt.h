@@ -9,10 +9,10 @@
 namespace jdd{
 
 //Network Ints
-typedef int8_be uint8_nt;
-typedef int16_be uint16_nt;
-typedef int32_be uint32_nt;
-typedef int64_be uint64_nt;
+typedef uint8_be uint8_nt;
+typedef uint16_be uint16_nt;
+typedef uint32_be uint32_nt;
+typedef uint64_be uint64_nt;
 
 typedef int8_be int8_nt;
 typedef int16_be int16_nt;
