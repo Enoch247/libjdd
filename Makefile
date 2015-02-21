@@ -2,64 +2,58 @@
 # Written by: Joshua DeWeese(josh.deweese@gmail.com)
 # please catch and release
 #*******************************************************************************
-
-# additional dirs to search for libs
-#LDIRS = ./
-
-# additional dirs to search for header files
-#IDIRS = ./
-
-# flags
-DEBUG    = -g
-CFLAGS   = $(CXXFLAGS)
-CXXFLAGS = $(DEBUG) -Wall -fPIC -std=c++0x
-LDFLAGS  = $(CXXFLAGS)
-
-# other
-.DEFAULT_GOAL = all
-#VPATH = ./src/ ./test/
 SRC = $(shell ls *.cpp test/*.cpp)
 OBJ = $(SRC:.cpp=.o)
 DEP = $(OBJ:.o=.o.dep)
 
+CFLAGS   = $(CXXFLAGS)
+CXXFLAGS = -Wall -fPIC -std=c++0x
+LDFLAGS  = $(CXXFLAGS)
+
 #===============================================================================
 #convenience items for testing and what not:
 
-.PHONY: all clean todolist test
+.PHONY: all clean todolist test test-bitbang test-coroutine
 
-all: libjdd.a
+.DEFAULT_GOAL = all
+all: libjdd.a test/bitbangtest test/coroutine
 
 clean:
-	-rm $(OBJ) $(DEP) libjdd.a test/bitbangtest
+	-rm `find -name "*.o"` `find -name "*.o.dep"` libjdd.a
+	-rm test/bitbangtest test/coroutine
 
 todolist:
 	grep --color=auto 'TODO' `find`
 
-test: test-bitbang
+test: test-bitbang test-coroutine
 
 test-bitbang: test/bitbangtest
+	./$<
+
+test-coroutine: test/coroutine
 	./$<
 
 #===============================================================================
 #recipes:
 
 #for each foo.o include its foo.o.dep
-#include $(patsubst %.o, %.o.dep,  $(wildcard *.o))
 -include $(DEP)
 
 #create lib
-libjdd.a: bitbang.o uri.o FtdiWrapper.o FtdiStreamBuf.o FtdiStream.o
+libjdd.a: uri.o FtdiWrapper.o FtdiStreamBuf.o FtdiStream.o
 
 #create test program
-test/bitbangtest: test/bitbangtest.o libjdd.a
-	$(CXX) $(LDFLAGS) -o $@ $^
+test/bitbangtest: test/bitbangtest.o
+
+#create test program
+test/coroutine: test/coroutine.o
 
 #-------------------------------------------------------------------------------
 #generic recipes:
 
 #create program from program.o file (and other object files)
-#%: %.o
-#	$(CXX) $(LDFLAGS) -o $@ $^
+%: %.o
+	$(CXX) $(LDFLAGS) -o $@ $^
 
 #generate foo.a from it's dependencies
 %.a:

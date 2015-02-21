@@ -1,5 +1,5 @@
 #include <sstream>
-#include "../bitbang.h"
+#include "../StdInt.h"
 
 using namespace std;
 using namespace jdd;

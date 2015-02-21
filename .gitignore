@@ -1,14 +1,6 @@
-#make depend files
+*.a
 *.dep
-
-#object files
 *.o
 
-#lib files
-*.so*
-*.a
-
-#the executable generated from compiling
-#/foo
 /test/bitbangtest
-
+/test/coroutine
