@@ -16,11 +16,11 @@ void foo()
         //anything put here will be done once per loop
 
         cout << "A" << endl;
-        yeild;
+        yield;
         cout << "B" << endl;
-        yeild;
+        yield;
         cout << "C" << endl;
-        yeild;
+        yield;
     }
     coroutine_end;
 }
@@ -31,11 +31,11 @@ void bar()
     while(1)
     {
         cout << "X" << endl;
-        yeild;
+        yield;
         cout << "Y" << endl;
-        yeild;
+        yield;
         cout << "Z" << endl;
-        yeild;
+        yield;
     }
     coroutine_end;
 }
