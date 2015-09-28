@@ -1,7 +1,4 @@
-/*******************************************************************************
- Written by: Joshua DeWeese(josh.deweese@gmail.com)
- please catch and release
-*******************************************************************************/
+// a c++ friendlier version of endian.h provided by most *nix systems
 
 #pragma once
 #include <stdint.h>

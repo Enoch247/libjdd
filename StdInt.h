@@ -1,7 +1,6 @@
-/*******************************************************************************
- Written by: Joshua DeWeese(josh.deweese@gmail.com)
- please catch and release
-*******************************************************************************/
+// handy big/little endian integers
+// they can be treated as normal vars, but will be stored in memory in their
+// asigned endianess
 
 #pragma once
 #include <iostream>

@@ -1,8 +1,3 @@
-/*******************************************************************************
- Written by: Joshua DeWeese(josh.deweese@gmail.com)
- please catch and release
-*******************************************************************************/
-
 #include <iostream>
 #include "FtdiStream.h"
 

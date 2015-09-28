@@ -1,8 +1,3 @@
-/*******************************************************************************
- Written by: Joshua DeWeese(josh.deweese@gmail.com)
- please catch and release
-*******************************************************************************/
-
 #pragma once
 #include <iostream>
 #include <string>

@@ -1,7 +1,3 @@
-#*******************************************************************************
-# Written by: Joshua DeWeese(josh.deweese@gmail.com)
-# please catch and release
-#*******************************************************************************
 SRC = $(shell ls *.cpp test/*.cpp)
 OBJ = $(SRC:.cpp=.o)
 DEP = $(OBJ:.o=.o.dep)
