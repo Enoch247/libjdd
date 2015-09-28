@@ -1,7 +1,7 @@
 #pragma once
 #include <streambuf>
 #include <vector>
-#include "FtdiWrapper.h"
+#include "FtdiWrapper.hpp"
 
 using namespace std;
 namespace jdd{

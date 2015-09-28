@@ -1,5 +1,5 @@
 #include <sstream>
-#include "../StdInt.h"
+#include "../StdInt.hpp"
 
 using namespace std;
 using namespace jdd;

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "FtdiStream.h"
+#include "FtdiStream.hpp"
 
 namespace jdd{
 

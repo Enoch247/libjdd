@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "FtdiStreamBuf.h"
+#include "FtdiStreamBuf.hpp"
 
 using namespace std;
 namespace jdd{

@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <sstream>
 #include <string>
-#include "FtdiWrapper.h"
+#include "FtdiWrapper.hpp"
 
 namespace jdd{
 

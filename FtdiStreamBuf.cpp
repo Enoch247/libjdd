@@ -1,4 +1,4 @@
-#include "FtdiStreamBuf.h"
+#include "FtdiStreamBuf.hpp"
 
 namespace jdd{
 
