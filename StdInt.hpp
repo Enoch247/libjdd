@@ -191,8 +191,10 @@ StdInt<T, E> operator ^ (const StdInt<T, E>& lhv, const StdInt<T, E>& rhv)
 //==============================================================================
 //encodings
 
-struct BigEndian
+class BigEndian
 {
+    public:
+
     template<typename T>
     static inline T encode(T t) {return htobe(t);}
 
@@ -202,8 +204,10 @@ struct BigEndian
 
 //------------------------------------------------------------------------------
 
-struct LilEndian
+class LilEndian
 {
+    public:
+
     template<typename T>
     static inline T encode(T t) {return htole(t);}
 
