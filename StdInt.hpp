@@ -9,12 +9,12 @@
 
 namespace jdd{
 
-//forwad declarations
+// forwad declarations
 class BigEndian;
 class LilEndian;
 template<class NativeType, class Encoding> union StdInt;
 
-//Big Endian
+// Big Endian
 typedef StdInt<uint8_t,  BigEndian> uint8_be;
 typedef StdInt<uint16_t, BigEndian> uint16_be;
 typedef StdInt<uint32_t, BigEndian> uint32_be;
@@ -25,7 +25,7 @@ typedef StdInt<int16_t, BigEndian> int16_be;
 typedef StdInt<int32_t, BigEndian> int32_be;
 typedef StdInt<int64_t, BigEndian> int64_be;
 
-//Little Endian
+// Little Endian
 typedef StdInt<uint8_t,  LilEndian> uint8_le;
 typedef StdInt<uint16_t, LilEndian> uint16_le;
 typedef StdInt<uint32_t, LilEndian> uint32_le;
@@ -130,7 +130,7 @@ union StdInt
 };
 
 //==============================================================================
-//stream operators for NewtorkInt
+// stream operators for StdInts
 
 template<typename T1, typename T2>
 std::istream& operator >> (std::istream &is, StdInt<T1, T2> &i)
@@ -147,10 +147,10 @@ std::ostream& operator << (std::ostream &os, const StdInt<T1, T2> &i)
 }
 
 //==============================================================================
-//operator overloads for NewtorkInt (these need to be defined as non member
-//functions or else compiler has trouble deciding wether to use these or the
-//bultin ones that are for the native int type that the StdInts can be cast
-//too if doing something like "uint32_nt(0) == 0")
+// operator overloads for StdInts (these need to be defined as non member
+// functions or else compiler has trouble deciding wether to use these or the
+// bultin ones that are for the native int type that the StdInts can be cast
+// too if doing something like "uint32_be(0) == 0")
 
 template<typename T, typename E>
 bool operator == (const StdInt<T, E>& lhv, const StdInt<T, E>& rhv)
